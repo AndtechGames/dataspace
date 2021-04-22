@@ -12,5 +12,13 @@
 		"name": "AndtechGames",
 		"email": "andtechgames@gmail.com",
 		"url": "https://github.com/AndtechGames"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/AndtechGames/dataspace.git",
+		"directory": "Dataspace/Assets/Dataspace"
+	},
+	"publishConfig": {
+		"registry": "https://npm.pkg.github.com/@AndtechGames"
 	}
 }
