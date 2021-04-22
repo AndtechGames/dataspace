@@ -6,7 +6,6 @@
  *	LICENSE file in the root directory of this source tree
  */
 
-using Andtech.Dataspace;
 #if DATASPACE_GRIDLOCK_SUPPORT
 using Andtech.Gridlock;
 #endif
@@ -31,7 +30,7 @@ protected override $0DataEventArgs GetEventArgs($1 oldValue, $1 newValue) => new
 }
 /**/
 
-namespace Boilerplate.Dataspace
+namespace Andtech.Dataspace
 {
 
 	public class FloatDataEventArgs : EventDataEventArgs<float>
