@@ -1,0 +1,16 @@
+{
+	"name": "com.andtech.dataspace",
+	"version": "0.1.0",
+	"displayName": "Dataspace",
+	"description": "Eventful data types.",
+	"keywords": [
+		"andtech",
+		"database",
+		"data"
+	],
+	"author": {
+		"name": "AndtechGames",
+		"email": "andtechgames@gmail.com",
+		"url": "https://github.com/AndtechGames"
+	}
+}

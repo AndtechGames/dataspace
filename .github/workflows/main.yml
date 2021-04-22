@@ -1,0 +1,81 @@
+# Version 0.5.0
+name: UPM Deployment
+
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '3.1.x'
+      - run: dotnet tool install --global Gooball
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+          registry-url: 'https://npm.pkg.github.com'
+
+      - name: Initialize Pipeline Variables
+        run: |
+          version=$(goo package get-version "${{ secrets.PACKAGE_ROOT }}")
+          echo "VERSION=$version" >> $GITHUB_ENV
+
+      - name: Preprocess Package
+        run: |
+          if [ -e "preamble.txt" ]
+          then
+            find "${{ secrets.PACKAGE_ROOT }}" \( -iname "*.cs" -o -iname "*.shader" \) | while read fname; do
+              cat "preamble.txt" | goo transform inject "${fname}"
+            done
+          fi
+      - name: Transfer Special Files
+        run: |
+          function transfer () {
+            if [ -e "$1" ]
+            then
+              cp -n "$1" "${{ secrets.PACKAGE_ROOT }}"
+              touch "${{ secrets.PACKAGE_ROOT }}/$1.meta"
+            fi
+          }
+          transfer README.md
+          transfer LICENSE
+          transfer CHANGELOG.md
+      - name: Prepare Package
+        run: |
+          cd "${{ secrets.PACKAGE_ROOT }}"
+          if [ -e "Samples" ]
+          then
+            goo transform hide-folder "Samples"
+            goo package ignore-folder . "Samples"
+          fi          
+          if [ -e "Tests" ]
+          then
+            goo transform hide-folder "Tests"
+          fi
+
+      - name: Publish UPM (scoped registry)
+        run: |
+          npm publish "${{ secrets.PACKAGE_ROOT }}"
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Publish UPM (git repository)
+        uses: s0/git-publish-subdir-action@develop
+        env:
+          REPO: self
+          BRANCH: upm
+          FOLDER: "\"${{ secrets.PACKAGE_ROOT }}\""
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MESSAGE: "Deploy: {sha} (v${{env.VERSION}})"
+      - name: Tag Release
+        run: |
+          git fetch origin upm
+          git checkout -f upm
+          git tag v${{env.VERSION}} HEAD
+          git push --tags || echo "::warning ::Tag failed. Has version ${{env.VERSION}} already been published?"
