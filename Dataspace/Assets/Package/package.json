@@ -1,24 +1,16 @@
 {
-	"name": "com.<COMPANY>.<NAME>",
-	"version": "1.0.0",
-	"displayName": "<DISPLAY_NAME>",
-	"description": "<DESCRIPTION>",
-	"dependencies": {
-		"com.unity.example-package": "1.0.0"
-	},
+	"name": "com.andtech.dataspace",
+	"version": "0.1.0",
+	"displayName": "Dataspace",
+	"description": "Eventful data types.",
 	"keywords": [
-		"example"
+		"andtech",
+		"database",
+		"data"
 	],
 	"author": {
-		"name": "<NAME>",
-		"email": "<EMAIL>",
-		"url": "<URL>"
-	},
-	"samples": [
-		{
-			"displayName": "<DISPLAY_NAME>",
-			"description": "<DESCRIPTION>",
-			"path": "Samples/<SAMPLE>"
-		}
-	]
+		"name": "AndtechGames",
+		"email": "andtechgames@gmail.com",
+		"url": "https://github.com/AndtechGames"
+	}
 }

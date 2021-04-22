@@ -1,0 +1,22 @@
+{
+    "name": "Andtech.Dataspace",
+    "rootNamespace": "Andtech.Dataspace",
+    "references": [
+        "GUID:bb21fb86f82af7d40b683193c84aad37"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [
+        {
+            "name": "com.andtech.gridlock",
+            "expression": "",
+            "define": "DATASPACE_GRIDLOCK_SUPPORT"
+        }
+    ],
+    "noEngineReferences": false
+}
