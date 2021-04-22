@@ -1,0 +1,24 @@
+{
+	"name": "com.<COMPANY>.<NAME>",
+	"version": "1.0.0",
+	"displayName": "<DISPLAY_NAME>",
+	"description": "<DESCRIPTION>",
+	"dependencies": {
+		"com.unity.example-package": "1.0.0"
+	},
+	"keywords": [
+		"example"
+	],
+	"author": {
+		"name": "<NAME>",
+		"email": "<EMAIL>",
+		"url": "<URL>"
+	},
+	"samples": [
+		{
+			"displayName": "<DISPLAY_NAME>",
+			"description": "<DESCRIPTION>",
+			"path": "Samples/<SAMPLE>"
+		}
+	]
+}
