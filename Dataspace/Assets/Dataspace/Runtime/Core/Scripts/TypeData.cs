@@ -73,6 +73,18 @@ namespace Andtech.Dataspace
 		protected override Vector3IntDataEventArgs GetEventArgs(Vector3Int oldValue, Vector3Int newValue) => new Vector3IntDataEventArgs(oldValue, newValue);
 	}
 
+	public class ColorDataEventArgs : EventDataEventArgs<Color>
+	{
+		public ColorDataEventArgs(Color oldValue, Color newValue) : base(oldValue, newValue) { }
+	}
+
+	public class ColorData : EventData<Color, ColorDataEventArgs>
+	{
+		public ColorData(Color value = default) : base(value) { }
+
+		protected override ColorDataEventArgs GetEventArgs(Color oldValue, Color newValue) => new ColorDataEventArgs(oldValue, newValue);
+	}
+
 #if DATASPACE_GRIDLOCK_SUPPORT
 	public class RotationDataEventArgs : EventDataEventArgs<Rotation>
 	{
