@@ -18,7 +18,7 @@ namespace Andtech.Dataspace
 		public override string ToString() => Name.Value;
 	}
 
-	public class UsageExample : MonoBehaviour
+	public class DatabaseExample : MonoBehaviour
 	{
 		private readonly Database<Guid, Animal> animals = new Database<Guid, Animal>();
 
