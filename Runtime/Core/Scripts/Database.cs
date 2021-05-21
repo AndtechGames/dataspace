@@ -50,12 +50,12 @@ namespace Andtech.Dataspace
 			return false;
 		}
 
-		bool IDictionary<TKey, TValue>.ContainsKey(TKey key)
+		public bool ContainsKey(TKey key)
 		{
 			return dictionary.ContainsKey(key);
 		}
 
-		bool IDictionary<TKey, TValue>.TryGetValue(TKey key, out TValue value)
+		public bool TryGetValue(TKey key, out TValue value)
 		{
 			return dictionary.TryGetValue(key, out value);
 		}
@@ -66,36 +66,36 @@ namespace Andtech.Dataspace
 			set => dictionary[key] = value;
 		}
 
-		ICollection<TKey> IDictionary<TKey, TValue>.Keys => dictionary.Keys;
-		ICollection<TValue> IDictionary<TKey, TValue>.Values => dictionary.Values;
+		public ICollection<TKey> Keys => dictionary.Keys;
+		public ICollection<TValue> Values => dictionary.Values;
 
-		void ICollection<KeyValuePair<TKey, TValue>>.Add(KeyValuePair<TKey, TValue> item)
+		public void Add(KeyValuePair<TKey, TValue> item)
 		{
 			dictionary.Add(item);
 		}
 
-		void ICollection<KeyValuePair<TKey, TValue>>.Clear()
+		public void Clear()
 		{
 			dictionary.Clear();
 		}
 
-		bool ICollection<KeyValuePair<TKey, TValue>>.Contains(KeyValuePair<TKey, TValue> item)
+		public bool Contains(KeyValuePair<TKey, TValue> item)
 		{
 			return dictionary.Contains(item);
 		}
 
-		void ICollection<KeyValuePair<TKey, TValue>>.CopyTo(KeyValuePair<TKey, TValue>[] array, int arrayIndex)
+		public void CopyTo(KeyValuePair<TKey, TValue>[] array, int arrayIndex)
 		{
 			dictionary.CopyTo(array, arrayIndex);
 		}
 
-		bool ICollection<KeyValuePair<TKey, TValue>>.Remove(KeyValuePair<TKey, TValue> item)
+		public bool Remove(KeyValuePair<TKey, TValue> item)
 		{
 			return dictionary.Remove(item);
 		}
 
-		int ICollection<KeyValuePair<TKey, TValue>>.Count => dictionary.Count;
-		bool ICollection<KeyValuePair<TKey, TValue>>.IsReadOnly => dictionary.IsReadOnly;
+		public int Count => dictionary.Count;
+		public bool IsReadOnly => dictionary.IsReadOnly;
 
 		IEnumerator<KeyValuePair<TKey, TValue>> IEnumerable<KeyValuePair<TKey, TValue>>.GetEnumerator()
 		{

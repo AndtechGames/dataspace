@@ -1,7 +1,8 @@
 {
 	"name": "com.andtech.dataspace",
-	"version": "0.1.1",
 	"displayName": "Dataspace",
+	"version": "0.1.2",
+	"unity": null,
 	"description": "Eventful data types.",
 	"keywords": [
 		"andtech",
@@ -13,6 +14,13 @@
 		"email": "andtechgames@gmail.com",
 		"url": "https://github.com/AndtechGames"
 	},
+	"samples": [
+		{
+			"displayName": "Database Example",
+			"description": "Example database usage.",
+			"path": "Samples~/Database Example"
+		}
+	],
 	"repository": {
 		"type": "git",
 		"url": "git://github.com/AndtechGames/dataspace.git",
