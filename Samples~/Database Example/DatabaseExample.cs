@@ -22,7 +22,6 @@ namespace Andtech.Dataspace
 			Name = new StringData(name);
 		}
 
-
 		public override string ToString() => Name.Value;
 	}
 
@@ -46,19 +45,19 @@ namespace Andtech.Dataspace
 			animal0.Name.Value = "Phillip";
 		}
 
-		private void Animals_Created(object sender, DatabaseEventArgs<Guid, Animal> e)
+		private void Animals_Created(DatabaseEventArgs<Guid, Animal> e)
 		{
 			e.Data.Name.OnValueChanged += Name_OnValueChanged;
 
 			Debug.Log($"{e.Data} was created");
 		}
 
-		private void Name_OnValueChanged(object sender, StringDataEventArgs e)
+		private void Name_OnValueChanged(string oldValue, string newValue)
 		{
-			Debug.Log($"{nameof(Animal.Name)} was changed to \"{e.NewValue}\"");
+			Debug.Log($"{nameof(Animal.Name)} was changed from \"{oldValue}\" to \"{newValue}\"");
 		}
 
-		private void Animals_Deleted(object sender, DatabaseEventArgs<Guid, Animal> e)
+		private void Animals_Deleted(DatabaseEventArgs<Guid, Animal> e)
 		{
 			e.Data.Name.OnValueChanged -= Name_OnValueChanged;
 
