@@ -27,14 +27,14 @@ namespace Andtech.Dataspace
 		{
 			dictionary.Add(key, value);
 
-			Created?.Invoke(this, new DatabaseEventArgs<TKey, TValue>(key, value));
+			Created?.Invoke(new DatabaseEventArgs<TKey, TValue>(key, value));
 		}
 
 		public bool Remove(TKey key)
 		{
 			if (dictionary.TryGetValue(key, out var value))
 			{
-				Deleted?.Invoke(this, new DatabaseEventArgs<TKey, TValue>(key, value));
+				Deleted?.Invoke(new DatabaseEventArgs<TKey, TValue>(key, value));
 
 				return true;
 			}
@@ -101,8 +101,8 @@ namespace Andtech.Dataspace
 		#endregion
 
 		#region EVENT
-		public event EventHandler<DatabaseEventArgs<TKey, TValue>> Created;
-		public event EventHandler<DatabaseEventArgs<TKey, TValue>> Deleted;
+		public event Action<DatabaseEventArgs<TKey, TValue>> Created;
+		public event Action<DatabaseEventArgs<TKey, TValue>> Deleted;
 		#endregion
 	}
 }

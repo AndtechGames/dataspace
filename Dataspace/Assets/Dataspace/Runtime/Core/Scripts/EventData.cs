@@ -1,32 +1,20 @@
 using System;
-using UnityEngine;
 
 namespace Andtech.Dataspace
 {
 
-	public class EventDataEventArgs<TValue>
-	{
-		public TValue NewValue { get; internal set; }
-		public TValue OldValue { get; internal set; }
-
-		public EventDataEventArgs(TValue oldValue, TValue newValue)
-		{
-			OldValue = oldValue;
-			NewValue = newValue;
-		}
-	}
-
-	public abstract class EventData<TValue, TEventArgs> where TEventArgs : EventDataEventArgs<TValue>
+	public abstract class EventData<TValue>
 	{
 		public TValue Value
 		{
 			get => value;
 			set
 			{
-				var args = GetEventArgs(Value, value);
+				var oldValue = Value;
+				var newValue = value;
 
 				this.value = value;
-				OnValueChanged?.Invoke(this, args);
+				OnValueChanged?.Invoke(oldValue, newValue);
 			}
 		}
 
@@ -34,10 +22,6 @@ namespace Andtech.Dataspace
 
 		public EventData(TValue value) => Value = value;
 
-		public event EventHandler<TEventArgs> OnValueChanged;
-
-		#region ABSTRACT
-		protected abstract TEventArgs GetEventArgs(TValue oldValue, TValue newValue);
-		#endregion
+		public event Action<TValue, TValue> OnValueChanged;
 	}
 }
