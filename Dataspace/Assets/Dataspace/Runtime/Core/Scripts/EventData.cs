@@ -1,7 +1,8 @@
-using System;
 
 namespace Andtech.Dataspace
 {
+
+	public delegate void OnValueChangedDelegate<TValue>(TValue oldValue, TValue newValue);
 
 	public abstract class EventData<TValue>
 	{
@@ -22,6 +23,6 @@ namespace Andtech.Dataspace
 
 		public EventData(TValue value) => Value = value;
 
-		public event Action<TValue, TValue> OnValueChanged;
+		public event OnValueChangedDelegate<TValue> OnValueChanged;
 	}
 }
