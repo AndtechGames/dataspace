@@ -2,27 +2,27 @@
 namespace Andtech.Dataspace
 {
 
-	public delegate void OnValueChangedDelegate<TValue>(TValue oldValue, TValue newValue);
+    public delegate void OnValueChangedDelegate<TValue>(TValue oldValue, TValue newValue);
 
-	public abstract class EventData<TValue>
-	{
-		public TValue Value
-		{
-			get => value;
-			set
-			{
-				var oldValue = Value;
-				var newValue = value;
+    public abstract class EventData<TValue>
+    {
+        public TValue Value
+        {
+            get => value;
+            set
+            {
+                var oldValue = Value;
+                var newValue = value;
 
-				this.value = value;
-				OnValueChanged?.Invoke(oldValue, newValue);
-			}
-		}
+                this.value = value;
+                OnValueChanged?.Invoke(oldValue, newValue);
+            }
+        }
 
-		private TValue value;
+        private TValue value;
 
-		public EventData(TValue value) => Value = value;
+        public EventData(TValue value) => Value = value;
 
-		public event OnValueChangedDelegate<TValue> OnValueChanged;
-	}
+        public event OnValueChangedDelegate<TValue> OnValueChanged;
+    }
 }
