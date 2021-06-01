@@ -1,0 +1,31 @@
+{
+	"name": "com.andtech.dataspace",
+	"version": "0.2.2",
+	"displayName": "Dataspace",
+	"description": "Eventful data types.",
+	"keywords": [
+		"andtech",
+		"database",
+		"data"
+	],
+	"author": {
+		"name": "Andtech Games",
+		"email": "andtechgames@gmail.com",
+		"url": "https://github.com/AndtechGames"
+	},
+	"samples": [
+		{
+			"displayName": "Database Example",
+			"Description": "Example database usage.",
+			"path": "Samples/Database Example"
+		}
+	],
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/AndtechGames/dataspace.git",
+		"directory": "Dataspace/Assets/Dataspace"
+	},
+	"publishConfig": {
+		"registry": "https://npm.pkg.github.com/@AndtechGames"
+	}
+}
