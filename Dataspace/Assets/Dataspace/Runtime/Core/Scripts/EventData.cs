@@ -23,6 +23,8 @@ namespace Andtech.Dataspace
 
         public EventData(TValue value) => Value = value;
 
-        public event OnValueChangedDelegate<TValue> OnValueChanged;
-    }
+		public void SetWithoutNotify(TValue value) => this.value = value;
+
+		public event OnValueChangedDelegate<TValue> OnValueChanged;
+	}
 }
